@@ -77,7 +77,24 @@ const loginController = async (req, res) => {
   }
 };
 
+const getCurrentUser = async (req, res) => {
+  console.log(req.username);
+  console.log(req.userId);
+
+  const _id = req.userId;
+  const foundUser = await userModel.findOne({
+    _id,
+  });
+  console.log(foundUser);
+  res.json({
+    success: true,
+    message: "user data fetched successfully",
+    foundUser,
+  });
+};
+
 module.exports = {
   loginController,
   signupController,
+  getCurrentUser,
 };
