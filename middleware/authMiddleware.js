@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 const authMiddleware = async (req, res, next) => {
   try {
-    const token = req.headers.autherization;
+    const token = req.headers.authorization;
     const validUser = jwt.decode(token, process.env.JWT_SECRET_KEY);
     if (!validUser)
       res.json({

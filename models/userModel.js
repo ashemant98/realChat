@@ -16,7 +16,6 @@ const userSchema = new mongoose.Schema(
     },
     active: {
       type: Boolean,
-      require: true,
     },
   },
   {

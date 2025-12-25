@@ -6,17 +6,18 @@ const signupController = async (req, res) => {
   try {
     const { username, password } = req.body;
 
+    console.log(username, password);
     const foundUser = await userModel.findOne({
       username,
     });
 
     if (!foundUser) {
-      const hashedPassword = bcrypt.hash(password, 10);
-      const res = await userModel.create({
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const result = await userModel.create({
         username,
         password: hashedPassword,
       });
-      res.status(200).json({
+      res.json({
         message: "signup successfull",
       });
     } else {
