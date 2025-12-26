@@ -1,5 +1,6 @@
 const express = require("express");
-const app = express();
+const {app} = require("./socket.js");
+const {server} = require("./socket.js");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -14,7 +15,7 @@ app.use(express.json());
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/chat", messageRoute);
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(
     "Server is running on Port " + PORT + " in mode " + process.env.MODE
   );
